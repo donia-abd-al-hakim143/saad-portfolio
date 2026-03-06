@@ -1,0 +1,16 @@
+/* أضف ده في ملف App.css */
+.hover-overlay {
+  opacity: 0;
+}
+
+div:hover > .hover-overlay {
+  opacity: 1;
+}
+
+.hover-info {
+  transform: translateY(100%);
+}
+
+div:hover .hover-info {
+  transform: translateY(0);
+}
