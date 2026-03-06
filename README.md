@@ -1,3 +1,48 @@
+# Saad Mahmoud Portfolio
+
+موقع محفظة أعمال سعد محمود - مصور ومنتج أفلام
+
+## 🚀 النشر على Netlify
+
+### الخطوات:
+
+1. **أضف الملفات المطلوبة:**
+   - ضع جميع ملفات الأصول في مجلد `public/`:
+     - `logo.jpg` - شعار الشركة
+     - `saad.jpg` - صورة سعد محمود
+     - `wedding.mp4`, `branding.mp4`, `ramdan2026.mp4`, إلخ - الفيديوهات
+
+2. **انشر على Netlify:**
+   - ارفع المشروع إلى GitHub
+   - اربط المستودع بـ Netlify
+   - Netlify سيتعرف تلقائياً على إعدادات `netlify.toml`
+
+3. **إعدادات البناء:**
+   - **Build command:** `npm run build`
+   - **Publish directory:** `dist`
+
+### استكشاف الأخطاء:
+
+إذا ظهرت صفحة بيضاء:
+- تأكد من وجود جميع ملفات الأصول في `public/`
+- تحقق من أن المسارات في الكود تبدأ بـ `/`
+- تأكد من أن `netlify.toml` موجود في الجذر
+
+## 🛠️ التطوير المحلي
+
+```bash
+npm install
+npm run dev
+```
+
+## 📦 البناء للإنتاج
+
+```bash
+npm run build
+```
+
+---
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

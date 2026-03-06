@@ -5,7 +5,6 @@ const GOLD2 = "#e8c97a";
 const BLACK = "#050505";
 const DARK  = "#0d0d0d";
 const DARK2 = "#111111";
-
 const GLOBAL_CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&display=swap');
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -73,7 +72,32 @@ function Label({children,center}){
 
 function Btn({children,onClick,full,ghost}){
   const[h,sh]=useState(false);
-  return<button onClick={onClick} onMouseEnter={()=>sh(true)} onMouseLeave={()=>sh(false)} style={{background:h?GOLD:"transparent",border:`1px solid ${GOLD}`,color:h?BLACK:GOLD,fontFamily:"'Cinzel',serif",fontSize:".68rem",letterSpacing:".3em",padding:"1rem 2.5rem",transition:"all .4s cubic-bezier(.4,0,.2,1)",width:full?"100%":"auto",cursor:"pointer",transform:h?"translateY(-2px) scale(1.02)":"translateY(0) scale(1)",boxShadow:h?`0 8px 25px rgba(201,168,76,.3)`:"none",position:"relative",overflow:"hidden"}} onMouseMove={e=>{if(h){const rect=e.target.getBoundingClientRect();const x=e.clientX-rect.left;e.target.style.setProperty('--x',x+'px');}}}>
+
+  // determine appearance based on hover state and ghost prop
+  const baseStyle = {
+    border:`1px solid ${GOLD}`,
+    fontFamily:"'Cinzel',serif",
+    fontSize:".68rem",
+    letterSpacing:".3em",
+    padding:"1rem 2.5rem",
+    transition:"all .4s cubic-bezier(.4,0,.2,1)",
+    width:full?"100%":"auto",
+    cursor:"pointer",
+    transform:h?"translateY(-2px) scale(1.02)":"translateY(0) scale(1)",
+    boxShadow:h?`0 8px 25px rgba(201,168,76,.3)`:"none",
+    position:"relative",
+    overflow:"hidden",
+  };
+  const bg = ghost ? "transparent" : (h ? GOLD : "transparent");
+  const color = ghost ? (h ? BLACK : GOLD) : (h ? BLACK : GOLD);
+
+  return<button
+    onClick={onClick}
+    onMouseEnter={()=>sh(true)}
+    onMouseLeave={()=>sh(false)}
+    style={{...baseStyle,background:bg,color:color}}
+    onMouseMove={e=>{if(h){const rect=e.target.getBoundingClientRect();const x=e.clientX-rect.left;e.target.style.setProperty('--x',x+'px');}}}
+  >
     <span style={{position:"relative",zIndex:2}}>{children}</span>
     <div style={{position:"absolute",inset:0,background:`radial-gradient(circle at var(--x,50%) 50%,rgba(201,168,76,.1),transparent 70%)`,opacity:h?1:0,transition:"opacity .3s"}}/>
   </button>;
@@ -236,8 +260,8 @@ function Hero(){
         <div style={{position:"absolute",inset:-34,borderRadius:"50%",border:`1px solid rgba(201,168,76,.07)`,animation:"spinRev 38s linear infinite"}}/>
         
         {/* تم التعديل هنا - الصورة بدل SP */}
-        <img 
-          src="public\logo.jpg" 
+        <img
+          src="/logo.jpg"
           alt="Saad Mahmoud"
           style={{
             width:"100%",
@@ -295,7 +319,7 @@ function About(){
     <div className="g2" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"6rem",alignItems:"center"}}>
       <Reveal>
         <div style={{position:"relative",aspectRatio:"3/4",background:DARK2,overflow:"hidden",maxWidth:460,cursor:"pointer"}} onMouseEnter={e=>{e.target.style.transform="scale(1.02)";e.target.style.boxShadow=`0 20px 40px rgba(201,168,76,.1)`;}} onMouseLeave={e=>{e.target.style.transform="scale(1)";e.target.style.boxShadow="none";}} transition="all .4s ease">
-          <img  src="/saad.jpg" alt="Saad Mahmoud" style={{width:"100%",height:"100%",objectFit:"cover",transition:"transform .4s ease"}} onMouseEnter={e=>e.target.style.transform="scale(1.05)"} onMouseLeave={e=>e.target.style.transform="scale(1)"}/>
+          <img src="/saad.jpg" alt="Saad Mahmoud" style={{width:"100%",height:"100%",objectFit:"cover",transition:"transform .4s ease"}} onMouseEnter={e=>e.target.style.transform="scale(1.05)"} onMouseLeave={e=>e.target.style.transform="scale(1)"}/>
           <div style={{position:"absolute",inset:0,background:"linear-gradient(135deg,rgba(5,5,5,.1) 0%,rgba(201,168,76,.05) 100%)",opacity:0,transition:"opacity .4s ease"}} onMouseEnter={e=>e.target.style.opacity=1} onMouseLeave={e=>e.target.style.opacity=0}/>
           <div style={{position:"absolute",top:0,left:0,width:50,height:50,borderTop:`2px solid ${GOLD}`,borderLeft:`2px solid ${GOLD}`,transition:"all .3s ease"}}/>
           <div style={{position:"absolute",bottom:0,right:0,width:50,height:50,borderBottom:`2px solid ${GOLD}`,borderRight:`2px solid ${GOLD}`,transition:"all .3s ease"}}/>
@@ -368,12 +392,12 @@ function Services(){
 
 /* ══════════ VIDEO GALLERY ══════════ */
 const VIDEOS=[
-  {id:1, type:"file", src:"./public/wedding.mp4", title:"Wedding Film ",         cat:"Weddings",    dur:"3:24", year:"2024", desc:"Cinematic wedding film for a luxury ceremony."},
-  {id:2, type:"file", src:"./public/branding.mp4", title:"Commercial — Brand Launch",    cat:"branding", dur:"1:05", year:"2024", desc:"Brand reveal video for a local startup."},
-  {id:3, type:"file", src:"./public/ramdan2026.mp4", title:"Red Crescent — Ramadan",       cat:"Documentary", dur:"5:12", year:"2026", desc:"Humanitarian documentary capturing aid efforts."},
-  {id:4, type:"file", src:"./public/work1.mp4", title:"Red Crescent-Aswan",              cat:"Social Media",dur:"0:45", year:"2025", desc:"Viral social media campaign content."},
-  {id:5, type:"file", src:"./public/work2.mp4", title:"The 57th Cairo International Book Fair",     cat:"Events",      dur:"4:30", year:"2023", desc:"Full coverage of a corporate conference."},
-  {id:6, type:"file", src:"./public/ourreel.mp4", title:"SUDAN Video",              cat:"Social Media",    dur:"2:18", year:"2024", desc:"Intimate engagement story."},
+  {id:1, type:"file", src:"/wedding.mp4", title:"Wedding Film ",         cat:"Weddings",    dur:"3:24", year:"2024", desc:"Cinematic wedding film for a luxury ceremony."},
+  {id:2, type:"file", src:"/branding.mp4", title:"Commercial — Brand Launch",    cat:"branding", dur:"1:05", year:"2024", desc:"Brand reveal video for a local startup."},
+  {id:3, type:"file", src:"/ramdan2026.mp4", title:"Red Crescent — Ramadan",       cat:"Documentary", dur:"5:12", year:"2026", desc:"Humanitarian documentary capturing aid efforts."},
+  {id:4, type:"file", src:"/work1.mp4", title:"Red Crescent-Aswan",              cat:"Social Media",dur:"0:45", year:"2025", desc:"Viral social media campaign content."},
+  {id:5, type:"file", src:"/work2.mp4", title:"The 57th Cairo International Book Fair",     cat:"Events",      dur:"4:30", year:"2023", desc:"Full coverage of a corporate conference."},
+  {id:6, type:"file", src:"/ourreel.mp4", title:"SUDAN Video",              cat:"Social Media",    dur:"2:18", year:"2024", desc:"Intimate engagement story."},
 ];
 const CATS=["All","Weddings","Commercials","Social Media","Documentary","Events"];
 
@@ -513,6 +537,8 @@ function Reel(){
         ):(
           <>
             <div style={{position:"absolute",inset:0,background:`radial-gradient(ellipse at center,rgba(201,168,76,.06) 0%,transparent 70%)`}}/>
+            {/* showreel cover logo */}
+            <img src="/logo.jpg" alt="logo" style={{position:"absolute",width:220,opacity:0.1,top:"50%",left:"50%",transform:"translate(-50%,-50%)"}}/>
             {[[{top:0,left:0},{borderTop:`1px solid rgba(201,168,76,.4)`,borderLeft:`1px solid rgba(201,168,76,.4)`}],[{top:0,right:0},{borderTop:`1px solid rgba(201,168,76,.4)`,borderRight:`1px solid rgba(201,168,76,.4)`}],[{bottom:0,left:0},{borderBottom:`1px solid rgba(201,168,76,.4)`,borderLeft:`1px solid rgba(201,168,76,.4)`}],[{bottom:0,right:0},{borderBottom:`1px solid rgba(201,168,76,.4)`,borderRight:`1px solid rgba(201,168,76,.4)`}]].map(([pos,brd],i)=><div key={i} style={{position:"absolute",width:30,height:30,...pos,...brd}}/>)}
             <PlayBtn onClick={()=>sp(true)}/>
             <p style={{position:"absolute",bottom:"1.5rem",fontFamily:"'Cinzel',serif",fontSize:".55rem",letterSpacing:".45em",color:"#3a3a3a"}}>SHOWREEL 2024 — SP PRODUCTION</p>
