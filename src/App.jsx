@@ -78,7 +78,7 @@ export default function App() {
         </p>
         {/* ── logo with 3 pulse rings ── */}
         <div className="logo-wrap" style={{ opacity: cv ? 1 : 0, transform: cv ? "scale(1)" : "scale(.75)", transition: "opacity 1s ease .3s, transform 1s ease .3s" }}>
-          <img src="/logo.png" className="logo" alt="SP Production" />
+          <img src="logo.png" className="logo" alt="SP Production" />
           <div className="logo-ring ring1" /><div className="logo-ring ring2" /><div className="logo-ring ring3" />
         </div>
         {/* ── tagline ── */}
@@ -154,7 +154,7 @@ export default function App() {
         <h2>Our Work</h2>
         <div className="grid">
           {mainVideos.map((video, index) => (
-            <div className="card" key={index}>
+            <div className="card" key={index} style={{ transitionDelay: `${index * 0.1}s` }}>
               <video src={video.src} controls onMouseOver={e => e.target.play()} onMouseOut={e => e.target.pause()} />
               <h3>{video.title}</h3>
             </div>

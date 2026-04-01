@@ -86,7 +86,7 @@ body {
   width:145px;
   height:145px;
   object-fit:cover;
-  border-radius:50%;
+  border-radius:20px;
   position:relative;
   z-index:1;
   border:3px solid #000;
@@ -252,12 +252,6 @@ body {
   transform:translateY(-6px) scale(1.1);
   box-shadow: 0 8px 25px rgba(201,168,76,0.5);
 }
-
-/* theme toggle */
-
-
-
-/* HERO */
 
 .hero{
   position:relative;
