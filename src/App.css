@@ -23,24 +23,11 @@ body.light {
 }
 
 .light p {
-  color: #666666;
+  color: #000000;
 }
 
-/* Dark Mode (الألوان الحالية) */
-body.dark, .dark {
-  --bg-primary: #121212;
-  --bg-secondary: #1e1e1e;
-  --text-primary: #e8e0d0;
-  --text-secondary: #888888;
-  --border-color: rgba(255,255,255,0.1);
-  --card-bg: #1a1a1a;
-  --shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
 
-body.dark {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-}
+
 
 /* ===== additional styles moved from App.jsx ===== */
 body { 
@@ -48,11 +35,7 @@ body {
   font-family:sans-serif; 
 }
 
-/* base theme */
-.dark { 
-  background:#ffffff; 
-  color:#000000; 
-}
+
 
 .light { 
   background:#ffffff; 
@@ -71,7 +54,7 @@ body {
   gap:1.6rem;
   padding:80px 6vw;
   text-align:center;
-  background:#ffffff;
+  /* background:#101010; */
   color:#000000;
 }
 
@@ -89,7 +72,7 @@ body {
   border-radius:20px;
   position:relative;
   z-index:1;
-  border:3px solid #000;
+  border:3px solid #252525;
   filter:drop-shadow(0 0 12px rgba(0,0,0,.25));
   animation:logoBreathe 4s ease-in-out infinite;
 }
@@ -136,20 +119,20 @@ body {
 
 .c-eyebrow{
   margin:0;
-  font-size:.6rem;
+  font-size:larger;
   letter-spacing:.5em;
-  color:#000;
+  color:#000000;
 }
 
 /* tagline */
 
 .c-tagline{
   margin:0;
-  font-size:1rem;
+  font-size:medium;
   font-weight:300;
   font-style:italic;
   letter-spacing:.1em;
-  color:#333;
+  color:#000000;
 }
 
 /* CONTACT CARDS */
@@ -158,11 +141,12 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem 2.5rem;
+  background: rgba(10, 10, 10, 0.96);
+  border-radius: 24px;
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.48);
   animation: fadeInUp 1s ease-out 0.2s both;
 }
 
@@ -180,23 +164,23 @@ body {
   align-items:center;
   gap:10px;
 
-  padding:12px 20px;
-  border-radius:50px;
+  padding:14px 22px;
+  border-radius:999px;
 
-  background: linear-gradient(135deg, #000 0%, #333 100%);
-  color:#fff;
+  background: linear-gradient(135deg, #181818 0%, #252525 100%);
+  color:#e8e8e8;
 
   font-size:14px;
   letter-spacing:.05em;
 
   transition:.4s;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.32);
 }
 
 .c-pill:hover{
-  transform:scale(1.08);
-  box-shadow:0 10px 30px rgba(0,0,0,.3);
-  background: linear-gradient(135deg, #333 0%, #000 100%);
+  transform:translateY(-2px);
+  box-shadow:0 22px 44px rgba(0,0,0,.32);
+  background: linear-gradient(135deg, #232323 0%, #171717 100%);
 }
 
 /* ICON */
@@ -209,28 +193,34 @@ body {
 .socials{
   margin-top:15px;
   display:flex;
-  gap:20px;
+  gap:18px;
   animation: fadeInUp 1s ease-out 1s both;
 }
 
 .social-btn{
   position:relative;
-  width:55px;
-  height:55px;
+  width:58px;
+  height:58px;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
   border-radius:50%;
-  background: linear-gradient(135deg, #111111 0%, #bbbab7 100%);
-  color:#fff;
+  background: linear-gradient(135deg, #202020 0%, #2f2f2f 100%);
+  color:#f2f2f2;
 
-  font-size:20px;
+  font-size:18px;
   overflow:hidden;
 
   transition:.4s;
-  box-shadow: 0 4px 15px rgba(29, 29, 29, 0.3);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.social-btn:hover {
+  transform:translateY(-5px) scale(1.05);
+  background: linear-gradient(135deg, #2b2b2b 0%, #3b3b3b 100%);
+  box-shadow: 0 16px 34px rgba(255,255,255,0.06);
 }
 
 /* glow effect */
@@ -246,11 +236,6 @@ body {
 
 .social-btn:hover::before{
   opacity:1;
-}
-
-.social-btn:hover{
-  transform:translateY(-6px) scale(1.1);
-  box-shadow: 0 8px 25px rgba(201,168,76,0.5);
 }
 
 .hero{

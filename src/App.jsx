@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { FaFacebookF, FaInstagram ,  FaLinkedinIn } from "react-icons/fa";
 import "./App.css"; 
 /* MARQUEE */
 const MW = ["Commercials", "Documentary", "Events", "Social Media", "Drone", "Cinematic", "4K", "Editing"];
@@ -25,8 +25,9 @@ export default function App() {
     return () => obs.disconnect();
   }, []);
   const mainVideos = [
+    { title: "Mansourya", src: "https://res.cloudinary.com/dj7vwskg5/video/upload/v1780580186/AQO_jJOgKtpNyrOolNMERaaSv0iPGAmdVo19YKF4FvEEbu41w2xRxXciijmjGUrJh9zMINEs3SHDjFTYsPgYeWRRxaJqDzGneMcDJITj8w_y7suro.mp4" },
+       { title: "Rbma", src: "https://res.cloudinary.com/dj7vwskg5/video/upload/v1780581064/AQPTi21xq98lUtm8yfja6cTCaWpx3IMPvSvl9UgWui3YCRGBAUaEq0Nsm0_K8xnuIqMEmNXWM_atsBH9-X9psSSOXDkhCvEO6faVQkSqFcy1PQ_mrsy6a.mp4" },
     { title: "theaddressinvestments", src: "https://res.cloudinary.com/dj7vwskg5/video/upload/v1774533737/snapinst_5ae657d5d4_ayjh80.mp4" },
-    { title: "theaddressinvestments", src: "https://res.cloudinary.com/dj7vwskg5/video/upload/v1774530745/0326_1_2_pqhh5l.mp4" },
     { title: "Red Crescent Event", src: "https://res.cloudinary.com/dj7vwskg5/video/upload/v1774532434/ramdan2026_xs2bmp.mp4" },
     { title: "Red Crescent Event", src: "https://res.cloudinary.com/dj7vwskg5/video/upload/v1774532450/work1_orsszo.mp4" },
     { title: "Red Crescent Event", src: "https://res.cloudinary.com/dj7vwskg5/video/upload/v1774531364/ourreel_byzagf.mp4" },
@@ -77,11 +78,11 @@ export default function App() {
         ))}
         {/* ── eyebrow ── */}
         <p className="c-eyebrow" style={{ opacity: cv ? 1 : 0, transition: "opacity .7s ease .15s" }}>
-          ✦  MEDIA PRODUCER · EGYPT ✦
+          ✦  VIDEO PRODUCTION SPECIALIST·✦
         </p>
         {/* ── logo with 3 pulse rings ── */}
         <div className="logo-wrap" style={{ opacity: cv ? 1 : 0, transform: cv ? "scale(1)" : "scale(.75)", transition: "opacity 1s ease .3s, transform 1s ease .3s" }}>
-          <img src="logo.png" className="logo" alt="SP Production" />
+                     <img src="/saad.jpg" className="about-img" alt="Saad Mahmoud" />
           <div className="logo-ring ring1" /><div className="logo-ring ring2" /><div className="logo-ring ring3" />
         </div>
         {/* ── tagline ── */}
@@ -95,37 +96,31 @@ export default function App() {
           <div className="c-divider-line" style={{ width: cv ? "60px" : "0px", transition: "width .9s ease .7s" }} />
         </div>
         {/* ── contact info cards ── */}
-      <div className="c-cards">
+        <div className="c-cards">
 
-  {/* CONTACT ITEMS */}
-  <div className="c-cards">
-
-  {/* CONTACT ITEMS */}
-  <div className="contact-row">
-    {[
-      { icon: "✉", val: "sm6709394@gmail.com" },
-      { icon: "☎", val: "01157792112" },
-    ].map((item, i) => (
-      <div key={i} className="c-pill">
-        <span className="c-icon">{item.icon}</span>
-        <span>{item.val}</span>
-      </div>
-    ))}
-  </div>
-
-  {/* SOCIAL */}
-  <div className="socials">
-    <a href="https://facebook.com" className="social-btn">
-      <FaFacebookF />
-    </a>
-    <a href="https://instagram.com" className="social-btn">
-      <FaInstagram />
-    </a>
-  </div>
-
-</div>
-
-</div>
+          <div className="socials">
+            <a href="https://facebook.com" className="social-btn" aria-label="Facebook">
+              <FaFacebookF />
+            </a>
+            <a href="https://instagram.com" className="social-btn" aria-label="Instagram">
+              <FaInstagram />
+            </a>
+            <a href="https://www.linkedin.com/in/saad-mahmoud-965a53351/" className="social-btn" aria-label="LinkedIn">
+              <FaLinkedinIn />
+            </a>
+          </div>
+          <div className="contact-row">
+            {[
+              { icon: "✉", val: "sm6709394@gmail.com" },
+              { icon: "☎", val: "01157792112" },
+            ].map((item, i) => (
+              <div key={i} className="c-pill">
+                <span className="c-icon">{item.icon}</span>
+                <span>{item.val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
       {/* ══ end contact ══ */}
       {/* hero text */}
@@ -146,6 +141,7 @@ export default function App() {
         <h2>Our Clients</h2>
         <div className="logos">
           <img src="/theaddressinvestments.jpg" alt="theaddressinvestments" />
+          <img src="/474620189_521194737144314_140895541837741813_n.jpg" />
           <img src="/440582692_833017858873940_4609254405662983498_n.jpg" alt="RCLOGO" />
           <img src="/el3bd.jpg" alt="client" />
           <img src="/safwa.png" alt="client" />
@@ -184,27 +180,26 @@ export default function App() {
         </div>
       </section>
       {/* ABOUT */}
-      <section >
+      <section className="about">
         <div className="about-side-label">ABOUT</div>
         <div className="about-container">
           <div className="about-img-wrap">
-            <img src="/saad.jpg" className="about-img" alt="Saad Mahmoud" />
+            <img src="logo.png" className="logo" alt="SP Production" />
             <div className="about-img-border" />
             <div className="about-img-dot dot1" />
             <div className="about-img-dot dot2" />
           </div>
           <div className="about-text-col">
-            <p className="about-eyebrow"> MEDIA PRODUCER</p>
-            <h2 className="about-heading">Every Frame<br /><span className="about-heading-gold">Tells a Story</span></h2>
+            <p className="about-eyebrow">MEDIA PRODUCER</p>
+            <h2 className="about-heading">Every Frame<br /><span className="about-heading-gold">Becomes an Experience</span></h2>
             <p className="about-para">
-              Saad is a media producer specializing in documentary storytelling,
-              humanitarian media and cinematic video production. His work includes
-              collaborations with organizations such as the Egyptian Red Crescent —
-              capturing moments that matter, with a lens shaped by empathy and craft.
+              Saad brings cinematic precision to documentary storytelling, event coverage,
+              and branded media. Each project is crafted to engage viewers with strong
+              visuals, authentic emotion and refined production value.
             </p>
             <p className="about-para" style={{ marginTop: "1rem" }}>
-              From intimate wedding films to large-scale awareness campaigns, every
-              project is approached with the same commitment: <em>tell the truth beautifully.</em>
+              From creative direction to post-production, the goal is simple:
+              deliver polished films that feel memorable, powerful and true.
             </p>
             <div className="about-sig">
               <div className="about-sig-line" />
